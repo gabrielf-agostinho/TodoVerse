@@ -1,0 +1,20 @@
+services:
+  init-db:
+    build:
+      context: ./shared/databases
+      dockerfile: Dockerfile
+    volumes:
+      - ./shared/databases:/db
+    restart: "no"
+
+  dotnet-api:
+    build: ./backends/dotnet
+    depends_on:
+      - init-db
+    ports:
+      - "5000:80"
+    volumes:
+      - ./shared/databases:/app/databases
+    environment:
+      - DATABASE_PATH=/app/databases/todoverse.db
+    restart: unless-stopped

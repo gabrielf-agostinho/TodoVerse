@@ -1,0 +1,11 @@
+# Shared
+
+## Databases
+shared/databases/todoverse.db
+
+# Backends
+
+## Dotnet
+backends/dotnet/obj
+backends/dotnet/bin
+backends/dotnet/Database

@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: TodoVerse
+  version: 1.0.0
+  description: API comum para múltiplas implementações de To-Do List.
+
+paths:
+  /todos:
+    get:
+      summary: Listar todos os To-Dos
+      responses:
+        '200':
+          description: Lista de to-dos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todo'
+    post:
+      summary: Criar um novo To-Do
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewTodo'
+      responses:
+        '201':
+          description: Criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+        '400':
+          description: Erro
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+  /todos/{id}:
+    put:
+      summary: Atualizar um To-Do
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '200':
+          description: Atualizado com sucesso
+        '404':
+          description: Não encontrado
+    delete:
+      summary: Remover um To-Do
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deletado com sucesso
+        '404':
+          description: Não encontrado
+
+components:
+  schemas:
+    NewTodo:
+      type: object
+      required:
+        - title
+      properties:
+        title:
+          type: string
+        completed:
+          type: boolean
+    Todo:
+      type: object
+      required:
+        - title
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        completed:
+          type: boolean
+    BadRequest:
+      type: object
+      properties:
+        error:
+          type: string

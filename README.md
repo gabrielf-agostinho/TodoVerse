@@ -12,6 +12,7 @@ Todos os serviços utilizam um **banco de dados SQLite compartilhado**, gerencia
 todoverse/
 ├── backends/                  # APIs por linguagem
 │   ├── dotnet/                # API em ASP.NET Core
+│   ├── node/                  # API em Node.JS
 ├── fronts/                    # Frontends desacoplados
 │   └── angular/
 ├── shared/
@@ -61,9 +62,9 @@ docker compose down -v
 * Script de estrutura: init.sql
 
 ## 🌐 APIs disponíveis
-✅ ASP.NET Core (.NET 9) — pronto
+✅ ASP.NET Core (.NET 9 | EF Core) — pronto
 
-⏳ Node.js — em construção
+✅ Node.js (Express | Prisma) — pronto
 
 ⏳ Python — em construção
 

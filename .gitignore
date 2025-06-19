@@ -9,3 +9,7 @@ shared/databases/todoverse.db
 backends/dotnet/obj
 backends/dotnet/bin
 backends/dotnet/Database
+
+## Node
+backends/node/node_modules
+backends/node/prisma/databases/

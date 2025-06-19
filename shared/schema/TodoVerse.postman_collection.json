@@ -436,11 +436,16 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:5000"
+			"value": ""
 		},
 		{
 			"key": "dotnet",
 			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "node",
+			"value": "http://localhost:4000",
 			"type": "string"
 		}
 	]

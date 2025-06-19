@@ -18,3 +18,18 @@ services:
     environment:
       - DATABASE_PATH=/app/databases/todoverse.db
     restart: unless-stopped
+
+  node-api:
+    build: ./backends/node
+    depends_on:
+      - init-db
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./shared/databases:/app/databases
+      - ./shared/schema:/app/schema
+    environment:
+      - DATABASE_PATH=/app/databases/todoverse.db
+      - OPENAPI_PATH=/app/schema/openapi.yaml
+      - DOCKER=true
+    restart: unless-stopped
